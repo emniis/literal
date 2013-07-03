@@ -36,6 +36,7 @@ class literal {
 					1000000=>'million',
 					1000000000=>'milliard')
 	);
+	protected 	$ban=array(" ", "\t", "\n", "\r", "\0", "\x0B", "\xA0");
 	public 		$number=null;//the number
 	public 		$million_number=null;// the million segment number
 	public 		$billion_number=null;// the billion segment number
@@ -51,7 +52,6 @@ class literal {
 	 * @return string
 	 */
 	function convertUnit($segment){
-		$this->lettre ;
 		$r='';
 		if ($segment<17) {
 			$r=$this->lettre['unit'][$segment];
@@ -59,8 +59,11 @@ class literal {
 			$r=$this->lettre['unit'][10].'-'.$this->lettre['unit'][$segment[1]];
 		}else if ($segment<100) {
 			if ($segment[1]==0) {
-
-				$r=$this->lettre['double'][$segment];
+				if ($segment==80) {
+					$r=$this->lettre['double'][$segment].'s ';
+				}else{
+					$r=$this->lettre['double'][$segment];
+				}
 			}else {
 				$r=$this->lettre['double'][$segment[0].'0'].'-'.$this->lettre['unit'][$segment[1]];
 			}
@@ -77,18 +80,8 @@ class literal {
 	function convertSegment($segment){
 
 		$r='';
-		if ($segment<17) {
-			$r=$this->lettre['unit'][$segment];
-		} else if ($segment<20) {
-			$r=$this->lettre['unit'][10].'-'.$this->lettre['unit'][$segment[1]];
-		}else if ($segment<100) {
-			if ($segment[1]==0) {
-
-				$r=$this->lettre['double'][$segment];
-			}else {
-				$r=$this->lettre['double'][$segment[0].'0'].'-'.$this->lettre['unit'][$segment[1]];
-			}
-				
+		if ($segment<100) {
+			$r=$this->convertUnit($segment);
 		}else if ($segment<200) {
 			if ($segment[1]==0 && $segment[2]==0) {
 
@@ -154,7 +147,8 @@ class literal {
 	 * @return string
 	 */
 	function literalize($number){
-		$this->number=(int)$number;
+		$number=$this->sinitize($number);
+		$this->number=$number;
 		$literal='';
 		//start treatment
 		$this->billion_number=$this->getBillion($number);
@@ -191,6 +185,11 @@ class literal {
 			}
 		}
 		return $literal;
+	}
+	
+	function sinitize($car){
+		$r=str_replace($this->ban, array(), $car);
+		return $r;
 	}
 
 }

@@ -53,8 +53,10 @@ class literal {
 	 */
 	function convertUnit($segment){
 		$r='';
+		$segment=preg_replace("#^0+#",'', $segment);
 		if ($segment<17) {
 			$r=$this->lettre['unit'][$segment];
+
 		} else if ($segment<20) {
 			$r=$this->lettre['unit'][10].'-'.$this->lettre['unit'][$segment[1]];
 		}else if ($segment<100) {
@@ -87,7 +89,7 @@ class literal {
 
 				$r=$this->lettre['segment'][$segment];
 			}else {
-				$r=$this->lettre['segment'][$segment[0].'00'].' '.$this->convertUnit($segment[1].$segment[2]);
+				$r=$this->lettre['segment'][$segment[0].'00'].'-'.$this->convertUnit($segment[1].$segment[2]);
 			}
 				
 		}else if ($segment<1000) {

@@ -24,11 +24,11 @@ if (isset($_POST['convertir']) && ($_POST['convertir']=='convertir')){
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Converter number in literal form</title>
+<title>Ecrire en lettre un nombre </title>
 </head>
 <body>
 	<h3>
-		nombre &agrave; converti :
+		nombre &agrave; convertir :
 		<?php echo $chiffre;?>
 	</h3>
 	<form method="post" action="">

@@ -1,6 +1,6 @@
 #Literal
 
-PHP class to transform integers numbers in their literal form. Available only in french.
+PHP class to translate integers numbers in their literal form. Available only in french.
 
 --------------------------------------------------------------
 

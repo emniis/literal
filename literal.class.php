@@ -49,6 +49,15 @@ class literal {
 	}
 	/**
 	 *
+	 *@param array $ban list of bannished chars
+	 */
+	function setBan($ban=array()){
+		if(sizeof($ban)>0){
+			$this->ban=$ban;
+		}
+	}
+	/**
+	 *
 	 * @param int $segment
 	 * @return string
 	 */

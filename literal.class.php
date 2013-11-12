@@ -201,7 +201,7 @@ class literal {
 	}
 	/**
 	 * 
-	 * @param string $car the string the sinitize.
+	 * @param string $car the string to sinitize.
 	 * @return mixed only numbers
 	 */
 	function sinitize($car){

@@ -2,6 +2,7 @@
 /**
  *
  * @author aurelle meless
+ * @contributor Ibrahim P
  * @license GPL license v2
  * @copyright ivoire maker 2013
  */

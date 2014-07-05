@@ -78,7 +78,12 @@ class literal {
 					$r=$this->lettre['double'][$segment];
 				}
 			}else {
-				$r=$this->lettre['double'][$segment[0].'0'].'-'.$this->lettre['unit'][$segment[1]];
+				if($segment[0]==7 || $segment[0]==9){
+					$r=$this->lettre['double'][($segment[0]-1).'0'].'-'.$this->lettre['unit'][($segment[1]+10)];
+				}else{
+					$r=$this->lettre['double'][$segment[0].'0'].'-'.$this->lettre['unit'][$segment[1]];
+				}
+				
 			}
 				
 		}

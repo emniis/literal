@@ -3,8 +3,6 @@
  * 	sample file index.php
  */
 include_once "literal.class.php";
-//
-$literal=new literal();
 $chiffre='';
 $lettre='';
 if (isset($_POST['convertir']) && ($_POST['convertir']=='convertir')){
